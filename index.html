@@ -153,19 +153,6 @@
             margin: 0 auto;
         }
 
-        .section__label {
-            display: inline-block;
-            background: rgba(99, 102, 241, 0.12);
-            color: var(--color-accent-light);
-            padding: 5px 14px;
-            border-radius: 100px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            margin-bottom: 16px;
-        }
-
         .section__title {
             font-size: clamp(1.6rem, 3.5vw, 2.4rem);
             font-weight: 700;
@@ -187,13 +174,15 @@
 
         /* ---- CARDS GRID ---- */
         .cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 24px;
             margin-top: 40px;
         }
 
         .card {
+            flex: 0 1 320px;
             background: var(--color-bg);
             border: 1px solid var(--color-border);
             border-radius: 16px;
@@ -336,9 +325,12 @@
             }
 
             .cards {
-                grid-template-columns: 1fr;
                 gap: 16px;
                 margin-top: 28px;
+            }
+
+            .card {
+                flex: 1 1 100%;
             }
 
             .card {
@@ -437,14 +429,13 @@
     <!-- 1. ОБО МНЕ -->
     <section class="section" id="about">
         <div class="section__inner fade-in">
-            <div class="section__label">01</div>
             <h2 class="section__title">Обо мне</h2>
             <div class="section__text">
                 <p>
-                    Меня зовут Владимир Зворыгин. Я специалист в области машинного обучения и обработки естественного языка (NLP). Занимаюсь разработкой и внедрением ML-решений, работаю с современными языковыми моделями и NLP-пайплайнами.
+                    Меня зовут Владимир Зворыгин. Я специалист в области машинного обучения и обработки естественного языка (NLP). Занимаюсь разработкой и внедрением ML-решений, работаю с современными языковыми моделями и NLP-пайплайнами. За менее чем 3 года прошёл путь от стажёра до senior-позиции.
                 </p>
                 <p>
-                    Как ментор я помогаю начинающим и переходящим в ML специалистам выстроить понимание области, освоить ключевые инструменты и выйти на уровень, достаточный для уверенной работы в индустрии. Мой подход основан на практике: теория закрепляется через реальные проекты и задачи.
+                    Как ментор я помогаю начинающим и переходящим в ML специалистам выстроить понимание области, освоить ключевые инструменты и выйти на уровень, достаточный для уверенной работы в индустрии. Мой подход основан на сочетании теории и практики: теория закрепляется через практические проекты и задачи.
                 </p>
             </div>
         </div>
@@ -453,11 +444,10 @@
     <!-- 2. КТО ТАКОЙ NLP СПЕЦИАЛИСТ -->
     <section class="section" id="nlp">
         <div class="section__inner fade-in">
-            <div class="section__label">02</div>
             <h2 class="section__title">Кто такой NLP специалист</h2>
             <div class="section__text">
                 <p>
-                    NLP-специалист (Natural Language Processing) — это инженер, который обучает компьютеры понимать, анализировать и генерировать человеческий язык. Это одно из самых востребованных направлений в AI.
+                    NLP-специалист (Natural Language Processing) — это инженер, который обучает компьютеры понимать, анализировать и генерировать человеческий язык. Это самое востребованное направление в AI.
                 </p>
             </div>
             <div class="cards">
@@ -473,8 +463,8 @@
                 </div>
                 <div class="card fade-in">
                     <div class="card__icon">&#128200;</div>
-                    <h3 class="card__title">ML-пайплайны</h3>
-                    <p class="card__text">Сбор данных, предобработка, обучение моделей, оценка качества и деплой в продакшен.</p>
+                    <h3 class="card__title">Работа с данными</h3>
+                    <p class="card__text">Сбор и очистка данных, разметка, построение датасетов, анализ качества данных и подготовка пайплайнов для обучения моделей.</p>
                 </div>
             </div>
         </div>
@@ -483,7 +473,6 @@
     <!-- 3. КАК ПРОХОДИТ ОБУЧЕНИЕ -->
     <section class="section" id="process">
         <div class="section__inner fade-in">
-            <div class="section__label">03</div>
             <h2 class="section__title">Как проходит обучение</h2>
             <div class="section__text">
                 <p>Менторство строится как индивидуальная программа, адаптированная под ваш текущий уровень и цели. Вот основные этапы:</p>
@@ -517,6 +506,13 @@
                         <p>В финале вы реализуете полноценный проект, который можно показать работодателю или использовать в продакшене.</p>
                     </div>
                 </div>
+                <div class="step fade-in">
+                    <div class="step__number">5</div>
+                    <div class="step__content">
+                        <h3>Собеседования и оффер</h3>
+                        <p>Разбираем типичные вопросы и задачи на собеседованиях, проводим mock-интервью и готовлю к уверенному прохождению отбора в топовые компании.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -524,18 +520,17 @@
     <!-- 4. ЧТО ТЫ ПОЛУЧИШЬ -->
     <section class="section" id="results">
         <div class="section__inner fade-in">
-            <div class="section__label">04</div>
             <h2 class="section__title">Что ты получишь от менторства</h2>
             <div class="cards">
                 <div class="card fade-in">
                     <div class="card__icon">&#127919;</div>
                     <h3 class="card__title">Структурированные знания</h3>
-                    <p class="card__text">Не разрозненные курсы, а целостное понимание ML и NLP: от математики до продакшен-решений.</p>
+                    <p class="card__text">Не разрозненные курсы, а целостное понимание ML и NLP: от базовых понятий до продакшен-решений.</p>
                 </div>
                 <div class="card fade-in">
                     <div class="card__icon">&#128187;</div>
                     <h3 class="card__title">Практический опыт</h3>
-                    <p class="card__text">Реальные задачи и проекты, которые можно добавить в портфолио и показать на собеседовании.</p>
+                    <p class="card__text">Реальные задачи и проекты, которые можно добавить в резюме и показать на собеседовании.</p>
                 </div>
                 <div class="card fade-in">
                     <div class="card__icon">&#128640;</div>
@@ -547,8 +542,18 @@
                     <h3 class="card__title">Персональная поддержка</h3>
                     <p class="card__text">Индивидуальный подход, обратная связь по коду и ответы на вопросы в любое время между встречами.</p>
                 </div>
+                <div class="card fade-in">
+                    <div class="card__icon">&#127942;</div>
+                    <h3 class="card__title">Оффер на работу</h3>
+                    <p class="card__text">Цель менторства — ваше трудоустройство. Вместе доведём подготовку до оффера в компанию, которая вам подходит.</p>
+                </div>
             </div>
         </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section cta-section" style="text-align: center;">
+        <a href="https://t.me/WocherZ" class="hero__cta" target="_blank" rel="noopener">Связаться</a>
     </section>
 
     <!-- FOOTER -->
