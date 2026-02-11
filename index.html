@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Владимир Зворыгин — Ментор по Machine Learning</title>
+    <style>
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --color-bg: #0b0f1a;
+            --color-surface: #111827;
+            --color-surface-hover: #1a2236;
+            --color-accent: #6366f1;
+            --color-accent-light: #818cf8;
+            --color-text: #e5e7eb;
+            --color-text-muted: #9ca3af;
+            --color-heading: #f9fafb;
+            --color-border: #1e293b;
+            --font-sans: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            --max-width: 1100px;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background-color: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* ---- HERO ---- */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 60px 24px;
+        }
+
+        .hero__inner {
+            max-width: var(--max-width);
+            width: 100%;
+            display: flex;
+            align-items: center;
+            gap: 60px;
+        }
+
+        .hero__photo {
+            flex-shrink: 0;
+            width: 280px;
+            height: 280px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid var(--color-accent);
+            box-shadow: 0 0 60px rgba(99, 102, 241, 0.25);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--color-surface);
+        }
+
+        .hero__photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .hero__photo-placeholder {
+            color: var(--color-text-muted);
+            font-size: 0.85rem;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .hero__content {
+            flex: 1;
+        }
+
+        .hero__subtitle {
+            display: inline-block;
+            background: rgba(99, 102, 241, 0.15);
+            color: var(--color-accent-light);
+            padding: 6px 16px;
+            border-radius: 100px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            letter-spacing: 0.03em;
+        }
+
+        .hero__title {
+            font-size: clamp(2rem, 5vw, 3.2rem);
+            font-weight: 800;
+            color: var(--color-heading);
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .hero__title span {
+            background: linear-gradient(135deg, var(--color-accent), #a78bfa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero__desc {
+            font-size: 1.1rem;
+            color: var(--color-text-muted);
+            max-width: 520px;
+            margin-bottom: 32px;
+        }
+
+        .hero__cta {
+            display: inline-block;
+            padding: 14px 36px;
+            background: var(--color-accent);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: background 0.25s, transform 0.2s;
+        }
+
+        .hero__cta:hover {
+            background: var(--color-accent-light);
+            transform: translateY(-2px);
+        }
+
+        /* ---- SECTIONS ---- */
+        .section {
+            padding: 100px 24px;
+        }
+
+        .section:nth-child(even) {
+            background: var(--color-surface);
+        }
+
+        .section__inner {
+            max-width: var(--max-width);
+            margin: 0 auto;
+        }
+
+        .section__label {
+            display: inline-block;
+            background: rgba(99, 102, 241, 0.12);
+            color: var(--color-accent-light);
+            padding: 5px 14px;
+            border-radius: 100px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 16px;
+        }
+
+        .section__title {
+            font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+            font-weight: 700;
+            color: var(--color-heading);
+            margin-bottom: 24px;
+            line-height: 1.25;
+        }
+
+        .section__text {
+            font-size: 1.05rem;
+            color: var(--color-text-muted);
+            max-width: 750px;
+            line-height: 1.8;
+        }
+
+        .section__text p + p {
+            margin-top: 16px;
+        }
+
+        /* ---- CARDS GRID ---- */
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            margin-top: 40px;
+        }
+
+        .card {
+            background: var(--color-bg);
+            border: 1px solid var(--color-border);
+            border-radius: 16px;
+            padding: 32px 28px;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .section:nth-child(even) .card {
+            background: var(--color-surface-hover);
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            border-color: var(--color-accent);
+        }
+
+        .card__icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 12px;
+            background: rgba(99, 102, 241, 0.12);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        .card__title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--color-heading);
+            margin-bottom: 10px;
+        }
+
+        .card__text {
+            font-size: 0.95rem;
+            color: var(--color-text-muted);
+            line-height: 1.7;
+        }
+
+        /* ---- STEPS ---- */
+        .steps {
+            margin-top: 48px;
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+        }
+
+        .step {
+            display: flex;
+            gap: 24px;
+            align-items: flex-start;
+        }
+
+        .step__number {
+            flex-shrink: 0;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--color-accent);
+            color: #fff;
+            font-weight: 700;
+            font-size: 1.15rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .step__content h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--color-heading);
+            margin-bottom: 6px;
+        }
+
+        .step__content p {
+            color: var(--color-text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* ---- FOOTER ---- */
+        .footer {
+            text-align: center;
+            padding: 40px 24px;
+            border-top: 1px solid var(--color-border);
+            color: var(--color-text-muted);
+            font-size: 0.85rem;
+        }
+
+        /* ---- FADE-IN ANIMATION ---- */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ---- RESPONSIVE ---- */
+        @media (max-width: 768px) {
+            .hero {
+                min-height: auto;
+                padding: 48px 16px;
+            }
+
+            .hero__inner {
+                flex-direction: column;
+                text-align: center;
+                gap: 32px;
+            }
+
+            .hero__photo {
+                width: 180px;
+                height: 180px;
+                box-shadow: 0 0 40px rgba(99, 102, 241, 0.2);
+            }
+
+            .hero__desc {
+                margin-left: auto;
+                margin-right: auto;
+                font-size: 1rem;
+            }
+
+            .hero__cta {
+                width: 100%;
+                text-align: center;
+                padding: 14px 24px;
+            }
+
+            .section {
+                padding: 60px 16px;
+            }
+
+            .section__text {
+                font-size: 0.95rem;
+            }
+
+            .cards {
+                grid-template-columns: 1fr;
+                gap: 16px;
+                margin-top: 28px;
+            }
+
+            .card {
+                padding: 24px 20px;
+            }
+
+            .steps {
+                margin-top: 32px;
+                gap: 24px;
+            }
+
+            .step {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                gap: 12px;
+            }
+
+            .step__number {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+
+            .footer {
+                padding: 28px 16px;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .hero {
+                padding: 36px 12px;
+            }
+
+            .hero__photo {
+                width: 150px;
+                height: 150px;
+            }
+
+            .hero__subtitle {
+                font-size: 0.75rem;
+                padding: 5px 12px;
+            }
+
+            .section {
+                padding: 48px 12px;
+            }
+
+            .section__title {
+                font-size: 1.4rem;
+            }
+
+            .card {
+                padding: 20px 16px;
+            }
+
+            .card__title {
+                font-size: 1.05rem;
+            }
+
+            .card__text {
+                font-size: 0.88rem;
+            }
+
+            .step__content h3 {
+                font-size: 1rem;
+            }
+
+            .step__content p {
+                font-size: 0.88rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HERO -->
+    <section class="hero" id="hero">
+        <div class="hero__inner">
+            <div class="hero__photo">
+                <!-- Замените src на путь к вашему фото -->
+                <img src="photo.jpg" alt="Владимир Зворыгин">
+                <!-- <div class="hero__photo-placeholder">Ваше фото<br>(замените на &lt;img&gt;)</div> -->
+            </div>
+            <div class="hero__content">
+                <div class="hero__subtitle">ML Mentor &bull; NLP Engineer</div>
+                <h1 class="hero__title">Владимир <span>Зворыгин</span></h1>
+                <p class="hero__desc">
+                    Помогаю войти в Machine Learning и NLP через структурированное менторство, практику на реальных задачах и индивидуальный подход.
+                </p>
+                <a href="https://t.me/WocherZ" class="hero__cta" target="_blank" rel="noopener">Связаться</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 1. ОБО МНЕ -->
+    <section class="section" id="about">
+        <div class="section__inner fade-in">
+            <div class="section__label">01</div>
+            <h2 class="section__title">Обо мне</h2>
+            <div class="section__text">
+                <p>
+                    Меня зовут Владимир Зворыгин. Я специалист в области машинного обучения и обработки естественного языка (NLP). Занимаюсь разработкой и внедрением ML-решений, работаю с современными языковыми моделями и NLP-пайплайнами.
+                </p>
+                <p>
+                    Как ментор я помогаю начинающим и переходящим в ML специалистам выстроить понимание области, освоить ключевые инструменты и выйти на уровень, достаточный для уверенной работы в индустрии. Мой подход основан на практике: теория закрепляется через реальные проекты и задачи.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. КТО ТАКОЙ NLP СПЕЦИАЛИСТ -->
+    <section class="section" id="nlp">
+        <div class="section__inner fade-in">
+            <div class="section__label">02</div>
+            <h2 class="section__title">Кто такой NLP специалист</h2>
+            <div class="section__text">
+                <p>
+                    NLP-специалист (Natural Language Processing) — это инженер, который обучает компьютеры понимать, анализировать и генерировать человеческий язык. Это одно из самых востребованных направлений в AI.
+                </p>
+            </div>
+            <div class="cards">
+                <div class="card fade-in">
+                    <div class="card__icon">&#128269;</div>
+                    <h3 class="card__title">Анализ текста</h3>
+                    <p class="card__text">Классификация, извлечение сущностей, определение тональности, суммаризация и семантический поиск.</p>
+                </div>
+                <div class="card fade-in">
+                    <div class="card__icon">&#129302;</div>
+                    <h3 class="card__title">Чат-боты и LLM</h3>
+                    <p class="card__text">Разработка диалоговых систем, fine-tuning языковых моделей, работа с GPT, BERT, LLaMA и другими архитектурами.</p>
+                </div>
+                <div class="card fade-in">
+                    <div class="card__icon">&#128200;</div>
+                    <h3 class="card__title">ML-пайплайны</h3>
+                    <p class="card__text">Сбор данных, предобработка, обучение моделей, оценка качества и деплой в продакшен.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. КАК ПРОХОДИТ ОБУЧЕНИЕ -->
+    <section class="section" id="process">
+        <div class="section__inner fade-in">
+            <div class="section__label">03</div>
+            <h2 class="section__title">Как проходит обучение</h2>
+            <div class="section__text">
+                <p>Менторство строится как индивидуальная программа, адаптированная под ваш текущий уровень и цели. Вот основные этапы:</p>
+            </div>
+            <div class="steps">
+                <div class="step fade-in">
+                    <div class="step__number">1</div>
+                    <div class="step__content">
+                        <h3>Диагностика и план</h3>
+                        <p>Определяем ваш текущий уровень, цели и составляем персональный план обучения с конкретными milestones.</p>
+                    </div>
+                </div>
+                <div class="step fade-in">
+                    <div class="step__number">2</div>
+                    <div class="step__content">
+                        <h3>Теория + практика</h3>
+                        <p>Каждая тема подкрепляется практическими заданиями: от ноутбуков с кодом до мини-проектов на реальных данных.</p>
+                    </div>
+                </div>
+                <div class="step fade-in">
+                    <div class="step__number">3</div>
+                    <div class="step__content">
+                        <h3>Регулярные созвоны</h3>
+                        <p>Еженедельные встречи для разбора вопросов, код-ревью и обсуждения прогресса. Между встречами — поддержка в чате.</p>
+                    </div>
+                </div>
+                <div class="step fade-in">
+                    <div class="step__number">4</div>
+                    <div class="step__content">
+                        <h3>Проект для портфолио</h3>
+                        <p>В финале вы реализуете полноценный проект, который можно показать работодателю или использовать в продакшене.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. ЧТО ТЫ ПОЛУЧИШЬ -->
+    <section class="section" id="results">
+        <div class="section__inner fade-in">
+            <div class="section__label">04</div>
+            <h2 class="section__title">Что ты получишь от менторства</h2>
+            <div class="cards">
+                <div class="card fade-in">
+                    <div class="card__icon">&#127919;</div>
+                    <h3 class="card__title">Структурированные знания</h3>
+                    <p class="card__text">Не разрозненные курсы, а целостное понимание ML и NLP: от математики до продакшен-решений.</p>
+                </div>
+                <div class="card fade-in">
+                    <div class="card__icon">&#128187;</div>
+                    <h3 class="card__title">Практический опыт</h3>
+                    <p class="card__text">Реальные задачи и проекты, которые можно добавить в портфолио и показать на собеседовании.</p>
+                </div>
+                <div class="card fade-in">
+                    <div class="card__icon">&#128640;</div>
+                    <h3 class="card__title">Карьерное ускорение</h3>
+                    <p class="card__text">Помощь с резюме, подготовка к собеседованиям и понимание того, что ожидает рынок от ML-инженеров.</p>
+                </div>
+                <div class="card fade-in">
+                    <div class="card__icon">&#129309;</div>
+                    <h3 class="card__title">Персональная поддержка</h3>
+                    <p class="card__text">Индивидуальный подход, обратная связь по коду и ответы на вопросы в любое время между встречами.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        &copy; 2026 Владимир Зворыгин. Все права защищены.
+    </footer>
+
+    <script>
+        // --- Fade-in on scroll ---
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            },
+            { threshold: 0.15 }
+        );
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    </script>
+
+</body>
+</html>
