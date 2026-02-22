@@ -384,6 +384,66 @@
             margin-top: 16px;
         }
 
+        /* ---- ABOUT LAYOUT ---- */
+        .about-layout {
+            display: flex;
+            gap: 48px;
+            align-items: flex-start;
+        }
+
+        .about-layout__text {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .achievements {
+            flex-shrink: 0;
+            width: 260px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .achievement {
+            padding: 20px;
+            border: 1px solid var(--color-border);
+            border-radius: 14px;
+            background: linear-gradient(165deg, rgba(20, 27, 43, 0.6), rgba(12, 16, 24, 0.8));
+            transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+                        border-color 0.3s,
+                        box-shadow 0.3s;
+        }
+
+        .achievement:hover {
+            transform: translateY(-3px);
+            border-color: var(--color-border-hover);
+            box-shadow: 0 8px 28px rgba(124, 106, 239, 0.1);
+        }
+
+        .achievement__icon {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+        }
+
+        .achievement__title {
+            font-family: var(--font-heading);
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--color-heading);
+            margin-bottom: 4px;
+        }
+
+        .achievement__text {
+            font-size: 0.85rem;
+            color: var(--color-text-muted);
+            line-height: 1.5;
+        }
+
+        /* Staggered achievement animations */
+        .achievement.fade-in:nth-child(1) { transition-delay: 0.1s; }
+        .achievement.fade-in:nth-child(2) { transition-delay: 0.25s; }
+        .achievement.fade-in:nth-child(3) { transition-delay: 0.4s; }
+
         /* ---- CARDS GRID ---- */
         .cards {
             display: flex;
@@ -675,6 +735,23 @@
                 font-size: 1rem;
             }
 
+            .about-layout {
+                flex-direction: column;
+                gap: 32px;
+            }
+
+            .achievements {
+                width: 100%;
+                flex-direction: row;
+                flex-wrap: wrap;
+                gap: 12px;
+            }
+
+            .achievement {
+                flex: 1 1 calc(50% - 6px);
+                min-width: 140px;
+            }
+
             .hero__cta {
                 width: 100%;
                 text-align: center;
@@ -856,16 +933,35 @@
 
     <!-- 1. ОБО МНЕ -->
     <section class="section" id="about">
-        <div class="section__inner fade-in">
-            <h2 class="section__title">Обо мне</h2>
-            <div class="section__text">
-                <p>
-                    Меня зовут Владимир Зворыгин. Я специалист в области машинного обучения и обработки естественного языка (NLP). Занимаюсь разработкой и внедрением ML-решений, работаю с современными языковыми моделями и NLP-пайплайнами. За менее чем 3 года прошёл путь от стажёра до senior-позиции.
-                </p>
-                <p>
-                    Как ментор я помогаю начинающим и переходящим в ML специалистам выстроить понимание области, освоить ключевые инструменты и выйти на уровень, достаточный для уверенной работы в индустрии. Мой подход основан на сочетании теории и практики: теория закрепляется через практические проекты и задачи.
-                </p>
+        <div class="section__inner fade-in about-layout">
+            <div class="about-layout__text">
+                <h2 class="section__title">Обо мне</h2>
+                <div class="section__text">
+                    <p>
+                        Меня зовут Владимир Зворыгин. Я специалист в области машинного обучения и обработки естественного языка (NLP). Занимаюсь разработкой и внедрением ML-решений, работаю с современными языковыми моделями и NLP-пайплайнами. За менее чем 3 года прошёл путь от стажёра до senior-позиции.
+                    </p>
+                    <p>
+                        Как ментор я помогаю начинающим и переходящим в ML специалистам выстроить понимание области, освоить ключевые инструменты и выйти на уровень, достаточный для уверенной работы в индустрии. Мой подход основан на сочетании теории и практики: теория закрепляется через практические проекты и задачи.
+                    </p>
+                </div>
             </div>
+            <aside class="achievements">
+                <div class="achievement fade-in">
+                    <div class="achievement__icon">&#128640;</div>
+                    <h3 class="achievement__title">Senior за &lt;3 года</h3>
+                    <p class="achievement__text">От стажёра до senior-позиции менее чем за 3 года</p>
+                </div>
+                <div class="achievement fade-in">
+                    <div class="achievement__icon">&#127908;</div>
+                    <h3 class="achievement__title">Спикер DUMP</h3>
+                    <p class="achievement__text">Выступление на IT-конференции DUMP</p>
+                </div>
+                <div class="achievement fade-in">
+                    <div class="achievement__icon">&#9997;&#65039;</div>
+                    <h3 class="achievement__title">Автор статей</h3>
+                    <p class="achievement__text">Автор статей про LLM и современные языковые модели</p>
+                </div>
+            </aside>
         </div>
     </section>
 
